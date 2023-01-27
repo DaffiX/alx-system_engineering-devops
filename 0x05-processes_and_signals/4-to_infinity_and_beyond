@@ -1,8 +1,3 @@
 #!/usr/bin/env bash
-#Bash script that displays To infinity and beyond indefinitely.
-#In between each iteration of the loop, add a sleep 2
-while true
-do
-  echo "To infinity and beyond"
-  sleep 2
-done
+#Bash script that displays the PID, along with the process name, of processes whose name contain the word bash
+pgrep bash -l
