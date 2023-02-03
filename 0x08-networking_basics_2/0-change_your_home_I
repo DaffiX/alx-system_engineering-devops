@@ -1,17 +1,7 @@
-#!/bin/bash
+#!/usr/bin/env bash
+# A script to change localhost addresses
 
-# Define the new IP addresses for localhost and facebook.com
-LOCALHOST_IP="127.0.0.2"
-FACEBOOK_IP="8.8.8.8"
-
-# Backup the current /etc/hosts file
-cp /etc/hosts /etc/hosts.bak
-
-# Replace the existing IP address for localhost with the new IP
-sed -i "s/127.0.0.1/$LOCALHOST_IP/g" /etc/hosts
-
-# Append a new line to the /etc/hosts file for facebook.com
-echo "$FACEBOOK_IP facebook.com" >> /etc/hosts
-
-# Verify the changes
-cat /etc/hosts
+cp /etc/hosts ~/hosts.new
+echo "127.0.0.2		localhost" > ~/hosts.new
+echo "8.8.8.8		facebook.com" >> ~/hosts.new
+cp -f ~/hosts.new /etc/hosts
