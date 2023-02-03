@@ -1,5 +1,4 @@
-#!/usr/bin/env bash
-#Bash script that configures an Ubuntu server with:
+#!/bin/bash
 
 # Define the new IP addresses for localhost and facebook.com
 LOCALHOST_IP="127.0.0.2"
