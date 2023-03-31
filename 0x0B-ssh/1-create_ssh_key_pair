@@ -1,4 +1,3 @@
 #!/usr/bin/env bash
-#Scripts creates an RSA Key pair
-#-t rsa: type, -b:bits, -f: file -location, -N:paraphrase
-ssh-keygen -t rsa -b 4096 -f ~/.ssh/school -N "betty"
+# creates an RSA key pair
+ssh-keygen -b 4096 -f school -N betty
