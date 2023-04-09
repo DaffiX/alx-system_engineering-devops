@@ -1,47 +1,20 @@
-class nginx_server {
-  package { 'nginx':
-    ensure => installed,
-  }
-
-  service { 'nginx':
-    ensure => running,
-    enable => true,
-  }
-
-  file { '/var/www/html/index.html':
-    ensure  => file,
-    content => 'Hello World!',
-  }
-
-  file { '/etc/nginx/sites-available/default':
-    ensure  => file,
-    content => template('nginx_server/default.erb'),
-    require => Package['nginx'],
-  }
-
-  file { '/etc/nginx/sites-enabled/default':
-    ensure  => 'link',
-    target  => '/etc/nginx/sites-available/default',
-    require => File['/etc/nginx/sites-available/default'],
-    notify  => Service['nginx'],
-  }
+# Install Nginx web server (w/ Puppet)
+package { 'nginx':
+  ensure => installed,
 }
 
-class nginx_redirect {
-  file { '/etc/nginx/sites-available/redirect':
-    ensure  => file,
-    content => template('nginx_server/redirect.erb'),
-    require => Package['nginx'],
-  }
-
-  file { '/etc/nginx/sites-enabled/redirect':
-    ensure  => 'link',
-    target  => '/etc/nginx/sites-available/redirect',
-    require => File['/etc/nginx/sites-available/redirect'],
-    notify  => Service['nginx'],
-  }
+file_line { 'aaaaa':
+  ensure => 'present',
+  path   => '/etc/nginx/sites-available/default',
+  after  => 'listen 80 default_server;',
+  line   => 'rewrite ^/redirect_me https://www.youtube.com/watch?v=QH2-TGUlwu4 permanent;',
 }
 
-include nginx_server
-include nginx_redirect
+file { '/var/www/html/index.html':
+  content => 'Hello World!',
+}
 
+service { 'nginx':
+  ensure  => running,
+  require => Package['nginx'],
+}
