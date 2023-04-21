@@ -1,6 +1,4 @@
 #!/usr/bin/env bash
 #Get the username argument
-username=$1
-
 #Run the whoami comm
-sudo -u $username whoami
+sudo -u "$1" whoami
