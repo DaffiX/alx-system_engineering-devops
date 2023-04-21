@@ -3,4 +3,4 @@
 username=$1
 
 #Run the whoami comm
-su $username -c "whoami"
+sudo -u $username whoami
