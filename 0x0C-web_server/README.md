@@ -1,5 +1,5 @@
 # Web server
-
+![alt text](https://s3.amazonaws.com/intranet-projects-files/holbertonschool-sysadmin_devops/266/8Gu52Qv.png)
 In this project, I learned how web servers work and began using one. I was
 - Nginx configuration
 
