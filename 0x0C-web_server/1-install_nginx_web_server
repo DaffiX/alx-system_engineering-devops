@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# installs nginx web server on server
+# installs nginx web server on server port 80
 
 apt-get -y update
 apt-get -y install nginx
